@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroud_main"
+    tools:context=".MainActivity">
+
+    <TableRow
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            style="@style/frame_layout"
+            android:background="@color/news_color">
+
+            <TextView
+                android:id="@+id/news_button"
+                style="@style/button_category"
+                android:text="@string/world_news" />
+        </FrameLayout>
+
+        <FrameLayout
+            style="@style/frame_layout"
+            android:background="@color/sport_color">
+
+            <TextView
+                android:id="@+id/sport_button"
+                style="@style/button_category"
+                android:text="@string/sport" />
+        </FrameLayout>
+
+        <FrameLayout
+            style="@style/frame_layout"
+            android:background="@color/culture_color">
+
+            <TextView
+                android:id="@+id/culture_button"
+                style="@style/button_category"
+                android:text="@string/culture" />
+        </FrameLayout>
+    </TableRow>
+
+    <!-- Empty view is only visible when the list has no items. -->
+    <TextView
+        android:id="@+id/empty_view"
+        style="@style/empty_main_portrait"
+        tools:text="@string/no_content" />
+    <!-- progress bar view is only visible when the list is being created -->
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        style="@style/progress_bar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+</android.support.constraint.ConstraintLayout>
