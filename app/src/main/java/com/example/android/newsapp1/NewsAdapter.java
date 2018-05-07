@@ -2,12 +2,13 @@ package com.example.android.newsapp1;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
         holder.articleDate.setText(newsList.get(position).getDateOfCreate());
         holder.articleTitle.setText(newsList.get(position).getArticleTitle());
         holder.articleSection.setText(newsList.get(position).getSectionName());
+        //get url to open in browser
+        //holder.articleUrl.setText(newsList.get(position).getUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Open your browser and search it", Toast.LENGTH_LONG).show();
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("www.google.com"))); // ???.getUrl()
             }
         });
+
+
     }
 
     @Override

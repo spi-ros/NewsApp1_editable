@@ -10,6 +10,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     TextView articleSection;
     TextView articleAuthor;
     TextView articleDate;
+    TextView articleUrl;
 
     NewsViewHolder(View itemView) {
         super(itemView);
@@ -19,5 +20,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         articleDate = itemView.findViewById(R.id.articleDateTxt);
 
 
+        //articleUrl = itemView.findViewById(R.id.articleUrlTxt);
     }
+
 }

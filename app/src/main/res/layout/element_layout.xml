@@ -41,4 +41,13 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/articleSectionNameTxt"
         app:layout_constraintStart_toStartOf="@+id/articleAuthorTxt" />
+
+    <!--
+    <TextView
+        android:id="@+id/articleUrlTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/articleSectionNameTxt"
+        app:layout_constraintStart_toStartOf="@+id/articleAuthorTxt" /> -->
 </android.support.constraint.ConstraintLayout>

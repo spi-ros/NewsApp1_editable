@@ -63,12 +63,14 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         }
     }
 
+    // the loader constructor - creates the uri according to user preferences
     @Override
     public Loader<List<NewsModel>> onCreateLoader(int i, Bundle bundle) {
 
         return new NewsLoader(this, REQUEST_URL);
     }
 
+    //what happens when the loading finished
     @Override
     public void onLoadFinished(Loader<List<NewsModel>> loader, List<NewsModel> myNewsList) {
 
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         }
     }
 
+    //what to do when loader reset
     @Override
     public void onLoaderReset(Loader<List<NewsModel>> loader) {
         newsAdapter.clearAllData();
