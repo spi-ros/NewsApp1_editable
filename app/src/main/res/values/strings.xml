@@ -5,8 +5,7 @@
     <string name="world_news">World News</string>
     <string name="sport">Sport</string>
     <string name="culture">Culture</string>
-
     <string name="no_connection">There is no connection, please check your internet</string>
-    <string name="no_content">No content to show</string>
+    <string name="no_content">No News updates available, please reload the app or check after some time.</string>
 
 </resources>

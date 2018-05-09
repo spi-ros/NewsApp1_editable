@@ -7,14 +7,14 @@ public class NewsModel {
     private String sectionName;
     private String authorName;
     private String dateOfCreate;
-    //private String myUrl;
+    private String myUrl;
 
     NewsModel(String articleTitle, String sectionName, String authorName, String dateOfCreate, String url) {
         this.articleTitle = articleTitle;
         this.sectionName = sectionName;
         this.authorName = authorName;
         this.dateOfCreate = dateOfCreate;
-        //this.myUrl = url;
+        this.myUrl = url;
     }
 
     // Get the title of article
@@ -34,5 +34,4 @@ public class NewsModel {
         return dateOfCreate;
     }
     // Get the url of the article
-   // public String getUrl() { return myUrl; }
-}
+    public String getArticleUrl() { return myUrl; }}

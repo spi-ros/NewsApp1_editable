@@ -36,9 +36,9 @@
     <style name="empty_main_portrait">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_below">@id/buttons</item>
         <item name="android:layout_centerInParent">true</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/padding</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
@@ -59,7 +59,7 @@
     <style name="progress_bar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_below">@id/buttons</item>
         <item name="android:layout_centerInParent">true</item>
+        <item name="android:paddingLeft">@dimen/padding</item>
     </style>
 </resources>

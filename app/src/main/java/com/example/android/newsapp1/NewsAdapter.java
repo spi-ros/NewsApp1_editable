@@ -31,22 +31,26 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final NewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final NewsViewHolder holder, final int position) {
         holder.articleAuthor.setText(newsList.get(position).getAuthorName());
         holder.articleDate.setText(newsList.get(position).getDateOfCreate());
         holder.articleTitle.setText(newsList.get(position).getArticleTitle());
         holder.articleSection.setText(newsList.get(position).getSectionName());
-        //get url to open in browser
-        //holder.articleUrl.setText(newsList.get(position).getUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("www.google.com"))); // ???.getUrl()
+
+                Uri newsUri = Uri.parse(newsList.get(position).getArticleUrl());
+
+                // Create a new intent to view the news URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
+
+                // Send the intent to launch a new activity
+               Context context = v.getContext();
+                context.startActivity(websiteIntent);
             }
         });
-
-
     }
 
     @Override
