@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
 
             //If have not connection with internet
             loadingBar.setVisibility(View.GONE);
-            mEmptyStateTextView.setText(R.string.internetConnectionMessage);
+            mEmptyStateTextView.setText(R.string.no_connection);
         }
     }
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
     public void onLoadFinished(Loader<List<NewsModel>> loader, List<NewsModel> myNewsList) {
 
         loadingBar.setVisibility(View.GONE);
-        mEmptyStateTextView.setText(R.string.nothingToShowMessage);
+        mEmptyStateTextView.setText(R.string.no_content);
         newsAdapter.clearAllData();
 
         if (myNewsList != null && !myNewsList.isEmpty()) {
