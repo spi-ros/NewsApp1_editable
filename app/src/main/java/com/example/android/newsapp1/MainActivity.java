@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
     private View loadingBar;
 
     private static final String Guardian_REQUEST_URL =
-         //  "http://content.guardianapis.com/uk?section=business&api-key=test";
     "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
     private static final int LOADER_NEWS_ID = 1;
 
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
 
         // Append query parameter and its value. For example, the `format=politics`
         uriBuilder.appendQueryParameter("format", "politics");
-        uriBuilder.appendQueryParameter("api-key", "10");
+        uriBuilder.appendQueryParameter("api-key", "results");
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
         uriBuilder.appendQueryParameter("orderby", orderBy);
 
