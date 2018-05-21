@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
     private View loadingBar;
 
     private static final String Guardian_REQUEST_URL =
-           " https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
+         //  "http://content.guardianapis.com/uk?section=business&api-key=test";
+    "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
     private static final int LOADER_NEWS_ID = 1;
 
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         String orderBy = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default)
+
         );
 
         // parse breaks apart the URI string that's passed into its parameter
@@ -91,13 +93,12 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        // Append query parameter and its value. For example, the `format=geojson`
-        uriBuilder.appendQueryParameter("format", "geojson");
-        uriBuilder.appendQueryParameter("limit", "10");
+        // Append query parameter and its value. For example, the `format=politics`
+        uriBuilder.appendQueryParameter("format", "politics");
+        uriBuilder.appendQueryParameter("api-key", "10");
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
         uriBuilder.appendQueryParameter("orderby", orderBy);
 
-        // Return the completed uri `http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=10&minmag=minMagnitude&orderby=time
         return new NewsLoader(this, uriBuilder.toString());
     }
 

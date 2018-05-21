@@ -79,7 +79,7 @@ public final class NewsQuery {
                 Log.e(LOG_DATA, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_DATA, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_DATA, "Problem retrieving the News JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
