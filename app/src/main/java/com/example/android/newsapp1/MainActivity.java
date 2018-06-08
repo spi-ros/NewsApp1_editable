@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         String orderBy = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default)
-
         );
 
         // parse breaks apart the URI string that's passed into its parameter
@@ -94,9 +93,6 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
 
         // Append query parameter and its value. For example, the `format=politics`
         uriBuilder.appendQueryParameter("format", "json");
-        uriBuilder.appendQueryParameter("api-key", "test");
-        uriBuilder.appendQueryParameter("minmag", minMagnitude);
-        uriBuilder.appendQueryParameter("orderby", orderBy);
 
         return new NewsLoader(this, uriBuilder.toString());
     }
