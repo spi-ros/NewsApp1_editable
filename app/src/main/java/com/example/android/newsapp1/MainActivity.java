@@ -10,7 +10,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,19 +43,19 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEmptyStateTextView =findViewById(R.id.empty_view);
+        mEmptyStateTextView = findViewById(R.id.empty_view);
         recyclerView = findViewById(R.id.recyclerView);
-        loadingBar= findViewById(R.id.loading_bar);
+        loadingBar = findViewById(R.id.loading_bar);
 
         newsList = new ArrayList<>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        newsAdapter = new NewsAdapter( this, newsList);
+        newsAdapter = new NewsAdapter(this, newsList);
         recyclerView.setAdapter(newsAdapter);
 
         // ConnectivityManager - check connection to internet (get info about connection of not null)
-        ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr != null ? connMgr.getActiveNetworkInfo() : null;
 
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -67,7 +69,31 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
             loadingBar.setVisibility(View.GONE);
             mEmptyStateTextView.setText(R.string.no_connection);
         }
+
+        SwipeRefreshLayout swipeLayout =  findViewById(R.id.refreshview);
+// implement refresh listener
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+
+                // call this method for repopulating recycler view with new data
+                refreshRecyclerView();
+            }
+        });
     }
+    private void refreshRecyclerView() {
+
+        // Handler to show refresh for a period of time you can use async task
+        // while commnunicating serve
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+            }
+        }, 5000);
+    }
+
 
     @Override
     // onCreateLoader instantiates and returns a new Loader for the given ID
@@ -93,6 +119,8 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
 
         // Append query parameter and its value. For example, the `format=politics`
         uriBuilder.appendQueryParameter("format", "json");
+        uriBuilder.appendQueryParameter("q", orderBy);
+        uriBuilder.appendQueryParameter("pageSize", minMagnitude);
 
         return new NewsLoader(this, uriBuilder.toString());
     }
